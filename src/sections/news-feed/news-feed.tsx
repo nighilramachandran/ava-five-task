@@ -4,8 +4,8 @@ import React, { FC } from "react";
 const NewsFeed: FC = () => {
   return (
     <div
-      className="flex items-center w-full bg-secondary"
-      style={{ justifyContent: "center", height: "50px" }}
+      className="flex items-center w-full h-full bg-secondary py-3"
+      style={{ justifyContent: "center" }}
     >
       <p className="text-default font-normal text-sm h-newsFeedHeight">
         We are currently experiencing local customs clearance delays. For the

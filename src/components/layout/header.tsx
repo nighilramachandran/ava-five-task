@@ -86,8 +86,9 @@ const Header: FC = () => {
 
   return (
     <header>
-      <nav className="bg-transparent items-center justify-between flex h-20 gap-8 px-5">
-        <div className="flex gap-8">
+      <nav className="bg-transparent items-center justify-between flex-col lg:flex-row flex h-full gap-8 px-5 py-5">
+        {/* first half */}
+        <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center sm:items-start w-full gap-8">
           <Logo />
           {loading ? (
             <Loader size={"50"} />
@@ -98,9 +99,10 @@ const Header: FC = () => {
             />
           )}
         </div>
-        <div className="flex  items-center gap-6">
+        {/* second half */}
+        <div className="flex flex-col sm:flex-row  items-center gap-6">
           <SearchInput />
-          <div className="flex gap-5">
+          <div className="flex  gap-5">
             {navButtons.map((el, ind) => {
               return (
                 <ButtonWithIcon

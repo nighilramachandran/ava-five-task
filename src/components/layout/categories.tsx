@@ -20,7 +20,7 @@ const Categories = ({ categ, handleChange }: categoriesProps) => {
   };
 
   return (
-    <div className="flex gap-5">
+    <div style={{ overflowX: "auto" }} className="flex max-w-full gap-5">
       {categ.map((cat: string, index: number) => {
         return (
           <Link
