@@ -27,7 +27,7 @@ const config: Config = {
       emphasis: "#626262",
       danger: "#ff0000",
       yellow: "#facc15",
-      gray:"#d1d5db",
+      gray: "#d1d5db",
       lightText: "#B6B6B6",
       bright: "#FFFFFF",
       divider: "rgba(0, 0, 0, 0.12)",
@@ -44,6 +44,7 @@ const config: Config = {
         naWrapperHeight: "371px",
         cartCardHeight: "80px",
         cartCardWidth: "75px",
+        productSpacing: "605px",
       },
       gridTemplateRows: {
         "[auto,auto,1fr]": "auto auto 1fr",
