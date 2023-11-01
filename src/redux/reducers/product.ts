@@ -2,7 +2,7 @@ import { RequestStatus } from "@/interfaces/State";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
 import { AppThunk } from "../store";
-import { Cart, Product } from "../types";
+import { Cart, Post, Product } from "../types";
 import { API } from "@/utility/api/constants";
 
 interface InitialState {
@@ -11,6 +11,7 @@ interface InitialState {
   cartProducts: Product[];
   categories: any[];
   product?: Product;
+  post?: Post[];
 }
 
 const initialState: InitialState = {
@@ -18,6 +19,7 @@ const initialState: InitialState = {
   products: [],
   categories: [],
   cartProducts: [],
+  post: [],
 };
 
 const ProductSlice = createSlice({
@@ -119,6 +121,5 @@ export const AddToBagAsync =
       dispatch(setStatus("error"));
     }
   };
-  
 
 export default ProductSlice;

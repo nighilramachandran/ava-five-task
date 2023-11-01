@@ -12,6 +12,8 @@ export const innerCardStyles: React.CSSProperties | undefined = {
   maxHeight: "316px",
   height: "100%",
   width: "100%",
+  display: "flex",
+  alignItems: "center",
   borderRadius: "24px",
   background: "rgba(222, 222, 222, 0.70)",
   position: "absolute",

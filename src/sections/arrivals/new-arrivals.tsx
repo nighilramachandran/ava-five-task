@@ -4,6 +4,7 @@ import Loader from "@/components/loader/loader";
 import { useAppSelector } from "@/redux/hooks";
 import React, { useEffect, useState } from "react";
 import { titleProps, viewAllProps } from "./style";
+import { enqueueSnackbar } from "notistack";
 
 const NewArrivals = () => {
   //selectors
@@ -23,7 +24,15 @@ const NewArrivals = () => {
         <p style={{ ...titleProps }} className="text-2xl font-semibold">
           New Arrivals
         </p>
-        <button style={{ ...viewAllProps }} className="text-primary">
+        <button
+          onClick={() =>
+            enqueueSnackbar("Select on Items from Arrivals", {
+              variant: "success",
+            })
+          }
+          style={{ ...viewAllProps }}
+          className="text-primary"
+        >
           View All
           <img src="/assets/icons/chevron-right.svg" alt="" />
         </button>

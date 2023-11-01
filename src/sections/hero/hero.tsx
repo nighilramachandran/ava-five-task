@@ -7,6 +7,7 @@ import {
   descStyles,
   buttonStyles,
 } from "./style";
+import { enqueueSnackbar } from "notistack";
 
 const Hero: FC = () => {
   return (
@@ -32,6 +33,11 @@ const Hero: FC = () => {
           </p>
           <div className="">
             <button
+              onClick={() =>
+                enqueueSnackbar("Comming soon", {
+                  variant: "success",
+                })
+              }
               style={{
                 ...buttonStyles,
               }}

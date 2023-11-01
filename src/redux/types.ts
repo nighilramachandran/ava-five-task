@@ -30,3 +30,9 @@ export interface Product {
   quantity: string;
   total: string;
 }
+
+export interface Post {
+  id: number;
+  title: string;
+  body: string;
+}

@@ -7,7 +7,9 @@ export default function Home() {
     <>
       <NewsFeed />
       <div className="container mx-auto p-4 flex flex-col gap-5">
-        <Hero />
+        <div className="hidden lg:block">
+          <Hero />
+        </div>
         <NewArrivals />
       </div>
     </>
