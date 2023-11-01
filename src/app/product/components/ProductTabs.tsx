@@ -9,7 +9,7 @@ export const ProductTabPanel = () => {
 
   return (
     <div className="bg-white p-10 rounded-lg shadow-lg">
-      <div className="flex justify-between mb-6 bg-card rounded-lg p-2">
+      <div className="flex flex-col lg:flex-row mb-6 bg-card rounded-lg p-2 gap-5">
         <button
           className={`${
             activeTab === "Product Description"
@@ -40,9 +40,7 @@ export const ProductTabPanel = () => {
         </button>
       </div>
       <div className="p-4">
-        <p className="font-bold">
-          {activeTab}
-        </p>
+        <p className="font-bold">{activeTab}</p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.Requeret tortor
         cras molestie tincidunt malesuada. Neque mas du imoti magna. Cras lacus,
         viverra auctor in turpis est quoque едет некрие. Color aeque mattis duis
