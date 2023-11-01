@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #ffffff;
+}
+
+a,
+buttons {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(
+    to right,
+    #438cb4 50%,
+    #438cb4 50%,
+    #b6b6b6 50%
+  );
+  background-size: 200% 100%;
+  background-position: 100%;
+  &:active {
+    transform: scale(0.96);
+  }
+  &:hover {
+    transition: all 0.9s cubic-bezier(0, 0, 0.23, 1);
+    background-position: 0%;
+    cursor: pointer;
+  }
+}
+a.active {
+  background-image: linear-gradient(
+    to right,
+    #438cb4 50%,
+    #438cb4 50%,
+    #171520 50%
+  );
+}
