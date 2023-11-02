@@ -83,17 +83,29 @@ export const GetProductAsync =
     try {
       const res = await axios.get(`${API}products/${id}`);
       dispatch(getProduct(res.data));
+      console.log("res.data", res.data);
       dispatch(setStatus("data"));
     } catch (error) {
       dispatch(setStatus("error"));
     }
   };
 
-export const FetchAllMyCartAsync = (): AppThunk => async (dispatch) => {
+// export const FetchAllMyCartAsync = (): AppThunk => async (dispatch) => {
+//   dispatch(setStatus("loading"));
+//   try {
+//     const res = await axios.get(`${API}carts/user/5`);
+//     dispatch(fetchCartProducts(res.data.carts[0].products));
+
+//     dispatch(setStatus("data"));
+//   } catch (error) {
+//     dispatch(setStatus("error"));
+//   }
+// };
+export const FetchSingleMyCartAsync = (): AppThunk => async (dispatch) => {
   dispatch(setStatus("loading"));
   try {
-    const res = await axios.get(`${API}carts/user/5`);
-    dispatch(fetchCartProducts(res.data.carts[0].products));
+    const res = await axios.get(`${API}carts/1`);
+    dispatch(fetchCartProducts(res.data.products));
 
     dispatch(setStatus("data"));
   } catch (error) {

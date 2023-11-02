@@ -1,10 +1,10 @@
 "use client";
+import { BreadcrumbCart } from "@/components/bread-crumn/BreadcrumbCart";
 import CartCard from "@/components/card/cart-card";
 import Loader from "@/components/loader/loader";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { FetchAllMyCartAsync } from "@/redux/reducers/product";
+import { FetchSingleMyCartAsync } from "@/redux/reducers/product";
 import { Product } from "@/redux/types";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const cartItemsTableHeader: string[] = [
@@ -26,7 +26,8 @@ export default function MyCart() {
 
   //effects
   useEffect(() => {
-    dispatch(FetchAllMyCartAsync());
+    // dispatch(FetchAllMyCartAsync());
+    dispatch(FetchSingleMyCartAsync());
   }, []);
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function MyCart() {
 
   return (
     <div className=" p-4 flex flex-col gap-5">
+      <BreadcrumbCart />
       <h2 className="text-primary font-semibold text-l">My Cart</h2>
       <div>
         {loading ? (

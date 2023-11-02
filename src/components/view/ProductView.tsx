@@ -3,38 +3,60 @@ import { ScrollableCards } from "../card/ScrollableCards";
 import { Product } from "@/redux/types";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { AddToBagAsync } from "@/redux/reducers/product";
+import { useRouter } from "next/navigation";
+import { ROUTES } from "@/utility/routes/contants";
+import { enqueueSnackbar } from "notistack";
 
 type Props = {
   product: Product;
 };
 
 export const ProductView = ({ product }: Props) => {
+  //dispatch
   const dispatch = useAppDispatch();
 
+  //router
+  const router = useRouter();
+
+  //selectors
   const { status } = useAppSelector((state) => state.Prod);
 
-  const [quantity, setquantity] = useState(1);
+  //states
+  const [quantity, setquantity] = useState<number>(1);
 
+  //const
+
+  const { GUEST } = ROUTES;
+
+  //functions
   const handleChangeQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
     setquantity(Number(e.target.value));
   };
 
   const addToBag = () => {
     dispatch(AddToBagAsync({ id: String(product.id), quantity }));
+    router.push(`${GUEST.MY_CART}`);
+    enqueueSnackbar("Added successfully", {
+      variant: "success",
+    });
   };
-  const addToWishlist = () => {};
+  const addToWishlist = () => {
+    enqueueSnackbar("Comming soon", {
+      variant: "success",
+    });
+  };
 
   return (
     <div className="flex flex-wrap m-4">
       <div className="w-full md:w-1/2 md:pr-8">
-        {/* <!-- Product Image --> */}
+        {/* Product Image   */}
         <img
           src={product.images[0]}
           alt="Product Image"
           className="w-full mb-4 rounded-lg"
         />
 
-        {/* <!-- Small Product Images --> */}
+        {/* Small Product Images  */}
         <div className="flex items-center overflow-x-auto mb-4">
           <button className="bg-gray-200 text-gray-600 px-2 py-1 rounded-l">
             <svg
@@ -108,23 +130,18 @@ export const ProductView = ({ product }: Props) => {
       </div>
 
       <div className="w-full md:w-1/2">
-        {/* <!-- Product Details --> */}
+        {/* Product Details  */}
         <h1 className="text-2xl font-bold mb-4">{product.title}</h1>
         <p className="text-gray-600 mb-4">{product.description}</p>
 
-        {/* <!-- Stars Rate --> */}
+        {/* Stars Rate  */}
         <div className="flex items-center mb-4">
           {Array.from(Array(Math.floor(product.rating)).keys()).map((star) => (
             <span className="text-yellow mr-1">★</span>
           ))}
-
-          {/* <span className="text-yellow mr-1">★</span>
-          <span className="text-yellow mr-1">★</span>
-          <span className="text-secondary mr-1">★</span>
-          <span className="text-secondary mr-1">★</span> */}
         </div>
 
-        {/* <!-- Price --> */}
+        {/* Price  */}
         <div className="flex space-x-3">
           <p className="text-2xl font-bold mb-4">
             $
@@ -141,13 +158,13 @@ export const ProductView = ({ product }: Props) => {
           </p>
         </div>
 
-        {/* <!-- Delivery Details --> */}
+        {/* Delivery Details  */}
         <div>
           <p className="font-bold">Delivary Details</p>
           <p className="mb-4 text-sm">Estimated delivery: 3-5 business days</p>
         </div>
 
-        {/* <!-- Quantity --> */}
+        {/* Quantity  */}
         <div className="flex items-center mb-4">
           <label className="mr-2">Quantity:</label>
           <input
@@ -160,7 +177,7 @@ export const ProductView = ({ product }: Props) => {
         </div>
         <ScrollableCards />
 
-        {/* <!-- Add to Bag Button --> */}
+        {/* Add to Bag Button  */}
 
         <div className="flex w-full">
           <button
@@ -172,7 +189,7 @@ export const ProductView = ({ product }: Props) => {
             Add to Bag
           </button>
 
-          {/* <!-- Add to Wishlist Button --> */}
+          {/* Add to Wishlist Button  */}
           <button
             onClick={addToWishlist}
             disabled={status === "loading"}
