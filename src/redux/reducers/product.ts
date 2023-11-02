@@ -41,6 +41,12 @@ const ProductSlice = createSlice({
     fetchCartProducts: (state, action: PayloadAction<Product[]>) => {
       state.cartProducts = action.payload;
     },
+    deleteItem: (state, action: PayloadAction<any>) => {
+      const idToDelete = action.payload;
+      state.cartProducts = state.cartProducts.filter(
+        (item) => item.id !== parseInt(idToDelete)
+      );
+    },
   },
 });
 
@@ -50,6 +56,7 @@ export const {
   fetchAllCategories,
   fetchCartProducts,
   getProduct,
+  deleteItem,
 } = ProductSlice.actions;
 
 export const FetchAllProductsAsync =
@@ -83,7 +90,6 @@ export const GetProductAsync =
     try {
       const res = await axios.get(`${API}products/${id}`);
       dispatch(getProduct(res.data));
-      console.log("res.data", res.data);
       dispatch(setStatus("data"));
     } catch (error) {
       dispatch(setStatus("error"));
@@ -106,6 +112,7 @@ export const FetchSingleMyCartAsync = (): AppThunk => async (dispatch) => {
   try {
     const res = await axios.get(`${API}carts/1`);
     dispatch(fetchCartProducts(res.data.products));
+    console.log("res.data", res.data.products);
 
     dispatch(setStatus("data"));
   } catch (error) {
@@ -113,12 +120,23 @@ export const FetchSingleMyCartAsync = (): AppThunk => async (dispatch) => {
   }
 };
 
+export const FetchDeleteCartAsync =
+  ({ id }: { id: string }): AppThunk =>
+  async (dispatch) => {
+    dispatch(setStatus("loading"));
+    try {
+      dispatch(deleteItem(id));
+    } catch (error) {
+      dispatch(setStatus("error"));
+    }
+  };
+
 export const AddToBagAsync =
   ({ id, quantity }: { id: string; quantity: number }): AppThunk =>
   async (dispatch) => {
     dispatch(setStatus("loading"));
     try {
-      const res = await axios.put<Cart>(`${API}carts/19`, {
+      const res = await axios.put<Cart>(`${API}carts/1`, {
         merge: true, // this will include existing products in the cart
         products: [
           {

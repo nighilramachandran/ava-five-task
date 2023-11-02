@@ -3,8 +3,12 @@ import { BreadcrumbCart } from "@/components/bread-crumn/BreadcrumbCart";
 import CartCard from "@/components/card/cart-card";
 import Loader from "@/components/loader/loader";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { FetchSingleMyCartAsync } from "@/redux/reducers/product";
+import {
+  FetchDeleteCartAsync,
+  FetchSingleMyCartAsync,
+} from "@/redux/reducers/product";
 import { Product } from "@/redux/types";
+import { enqueueSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 const cartItemsTableHeader: string[] = [
@@ -26,13 +30,18 @@ export default function MyCart() {
 
   //effects
   useEffect(() => {
-    // dispatch(FetchAllMyCartAsync());
+    //  dispatch(FetchAllMyCartAsync());
     dispatch(FetchSingleMyCartAsync());
   }, []);
 
   useEffect(() => {
     if (status === "data") setLoading(false);
   }, [status]);
+
+  //functions
+  const handelRemoveItems = (val: number) => {
+    dispatch(FetchDeleteCartAsync({ id: String(val) }));
+  };
 
   return (
     <div className=" p-4 flex flex-col gap-5">
@@ -44,10 +53,13 @@ export default function MyCart() {
         ) : (
           <div className="flex flex-col md:flex-row gap-5">
             <div className="w-full">
-              <CartItems products={cartProducts} />
+              <CartItems
+                handleRemove={(val) => handelRemoveItems(val)}
+                products={cartProducts}
+              />
             </div>
             <div className="w-1/3">
-              <OrderSummary products={cartProducts} />
+              {/* <OrderSummary products={cartProducts} /> */}
             </div>
           </div>
         )}
@@ -58,9 +70,13 @@ export default function MyCart() {
 
 interface cartProps {
   products: Product[];
+  handleRemove: (val: number) => void;
 }
 
-const CartItems = ({ products }: cartProps) => {
+const CartItems = ({ products, handleRemove }: cartProps) => {
+  const handleRemoveItem = (val: number) => {
+    handleRemove && handleRemove(val);
+  };
   return (
     <table className="min-w-full divide-y divide-divider">
       <thead>
@@ -101,12 +117,24 @@ const CartItems = ({ products }: cartProps) => {
               </tr>
               <div className="flex justify-end w-full gap-5">
                 <div>
-                  <button className="text-primary underline">
+                  <button
+                    onClick={() =>
+                      enqueueSnackbar("Comming soon,try to remove items", {
+                        variant: "success",
+                      })
+                    }
+                    className="text-primary underline"
+                  >
                     Move to Wishlist
                   </button>
                 </div>
                 <div>
-                  <button className="text-danger underline">Remove</button>
+                  <button
+                    onClick={() => handleRemoveItem(prod.id)}
+                    className="text-danger underline"
+                  >
+                    Remove
+                  </button>
                 </div>
               </div>
             </>
