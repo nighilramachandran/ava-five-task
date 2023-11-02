@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import { ROUTES } from "@/utility/routes/contants";
 import { toast } from "@/utility/ui";
 import { useSnackbar } from "notistack";
+import Link from "next/link";
 
 interface navProps {
   name: string;
@@ -89,7 +90,9 @@ const Header: FC = () => {
       <nav className="bg-transparent items-center justify-between flex-col lg:flex-row flex h-full gap-8 px-5 py-5">
         {/* first half */}
         <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center sm:items-start w-full gap-8">
-          <Logo />
+          <Link href={"/"}>
+            <Logo />
+          </Link>
           {loading ? (
             <Loader size={"50"} />
           ) : (

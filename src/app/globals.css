@@ -12,8 +12,8 @@ buttons {
   -webkit-text-fill-color: transparent;
   background-image: linear-gradient(
     to right,
-    #438cb4 50%,
-    #438cb4 50%,
+    #083046 50%,
+    #083046 50%,
     #b6b6b6 50%
   );
   background-size: 200% 100%;
@@ -30,8 +30,8 @@ buttons {
 a.active {
   background-image: linear-gradient(
     to right,
-    #438cb4 50%,
-    #438cb4 50%,
+    #083046 50%,
+    #083046 50%,
     #171520 50%
   );
 }

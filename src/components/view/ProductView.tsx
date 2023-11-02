@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollableCards } from "./ScrollableCards";
+import { ScrollableCards } from "../card/ScrollableCards";
 import { Product } from "@/redux/types";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { AddToBagAsync } from "@/redux/reducers/product";

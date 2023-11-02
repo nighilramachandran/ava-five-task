@@ -1,7 +1,7 @@
 import React from "react";
 
 type Props = {
-    id?:string
+  id?: string;
 };
 
 export const Breadcrumb = (props: Props) => {
@@ -13,7 +13,7 @@ export const Breadcrumb = (props: Props) => {
       <ol className="inline-flex items-center space-x-1 md:space-x-3">
         <li className="inline-flex items-center">
           <a
-            href="#"
+            href="/"
             className="text-sm text-gray-700 hover:text-gray-900 inline-flex items-center dark:text-gray-400 dark:hover:text-white"
           >
             <svg
@@ -42,7 +42,7 @@ export const Breadcrumb = (props: Props) => {
               ></path>
             </svg>
             <a
-              href="#"
+              href="/"
               className="text-gray-700 hover:text-gray-900 ml-1 md:ml-2 text-sm font-medium dark:text-gray-400 dark:hover:text-white"
             >
               Products

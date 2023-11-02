@@ -1,8 +1,8 @@
 "use client";
 import { useParams } from "next/navigation";
-import { Breadcrumb } from "../components/Breadcrumb";
-import { ProductView } from "../components/ProductView";
-import { ProductTabPanel } from "../components/ProductTabs";
+import { Breadcrumb } from "../../../components/bread-crumn/Breadcrumb";
+import { ProductView } from "../../../components/view/ProductView";
+import { ProductTabPanel } from "../../../components/tabs/ProductTabs";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { GetProductAsync } from "@/redux/reducers/product";
 import { Suspense, useEffect, useState } from "react";
