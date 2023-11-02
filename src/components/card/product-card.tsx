@@ -32,7 +32,7 @@ const ProductCard = ({ product }: productProps) => {
       onClick={() => handleNavigate(product.id)}
     >
       <div className="h-arCardHeight w-arCardHeight bg-card rounded flex-shrink-0 overflow-hidden">
-        <img className="w-full h-full" src={product.thumbnail} alt="delete" />
+        <img className="w-full h-full" src={product.thumbnail} />
       </div>
       <div className="flex flex-col gap-1">
         <div className="flex justify-between">

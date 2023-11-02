@@ -73,6 +73,7 @@ interface cartProps {
 }
 //components
 const CartItems = ({ products, handleRemove }: cartProps) => {
+  //functions
   const handleRemoveItem = (val: number) => {
     handleRemove && handleRemove(val);
   };
@@ -145,6 +146,7 @@ const CartItems = ({ products, handleRemove }: cartProps) => {
 };
 
 const OrderSummary = ({ products }: cartProps) => {
+  //functions
   const totalPrice = products.reduce(
     (accumulator, products) => accumulator + products.price,
     0
